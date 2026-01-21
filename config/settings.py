@@ -11,9 +11,12 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "dev-insecure-secret")
 DEBUG = os.getenv("DJANGO_DEBUG", "0") == "1"
 
 ALLOWED_HOSTS = [
-    "mundo-platinium-backend.onrender.com",
-    "127.0.0.1",
-    "localhost"
+    h.strip()
+    for h in os.getenv(
+        "DJANGO_ALLOWED_HOSTS",
+        "mundo-platinium-backend.onrender.com,127.0.0.1,localhost"
+    ).split(",")
+    if h.strip()
 ]
 
 if DEBUG and "testserver" not in ALLOWED_HOSTS:
@@ -61,33 +64,28 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-DATABASE_URL = "postgresql://postgres:UeUS8L6pJ4MziPOJ@db.joieblnjauvxfmmucvhy.supabase.co:5432/postgres"
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql://postgres:UeUS8L6pJ4MziPOJ@db.joieblnjauvxfmmucvhy.supabase.co:5432/postgres",
+)
 
-DATABASES = {
-    "default": dj_database_url.parse(
-        DATABASE_URL,
-        conn_max_age=600,
-        ssl_require=True,
-    )
-}
+DB_SSL_REQUIRE = os.getenv("DB_SSL_REQUIRE", "1") == "1"
 
-prueb = 1
-if prueb == 0:
-    if DATABASE_URL:
-        DATABASES = {
-            "default": dj_database_url.parse(
-                DATABASE_URL,
-                conn_max_age=600,
-                ssl_require=True,
-            )
+if DATABASE_URL:
+    DATABASES = {
+        "default": dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=DB_SSL_REQUIRE,
+        )
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
         }
-    else:
-        DATABASES = {
-            "default": {
-                "ENGINE": "django.db.backends.sqlite3",
-                "NAME": BASE_DIR / "db.sqlite3",
-            }
-        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
