@@ -1,0 +1,452 @@
+Base de datos: c:\Users\HOME\Documents\documentos_de_jesus\html_prueba\desarrolo\proyec2\backend\db.sqlite3
+
+Tablas encontradas (20):
+  - api_auditlog
+  - api_iprecord
+  - api_material
+  - api_materialmovimiento
+  - api_materialuso
+  - api_materialusoitem
+  - api_materialventa
+  - api_materialventaitem
+  - api_usuario
+  - auth_group
+  - auth_group_permissions
+  - auth_permission
+  - auth_user
+  - auth_user_groups
+  - auth_user_user_permissions
+  - django_admin_log
+  - django_content_type
+  - django_migrations
+  - django_session
+  - sqlite_sequence
+
+Tabla: api_auditlog
+  Campos:
+    - id (INTEGER)
+    - ts (datetime)
+    - actor (varchar(80))
+    - action (varchar(40))
+    - entity (varchar(80))
+    - entity_id (INTEGER)
+    - before_json (TEXT)
+    - after_json (TEXT)
+    - actor_id (bigint)
+  Registros (máx 1000):
+    (1, '2026-01-07 05:01:29.021863', 'admin', 'UPDATE', 'usuario', 7, '{"id": 7, "username": "u_demo_05", "cedula": "99000005", "nombre": "Nombre5", "apellido": "Apellido5", "fecha_nacimiento": "1995-01-05", "edad": 31, "email": "u_demo_05@demo.local", "telefono": "555-01005", "estado": "activo", "nivel": 1, "is_active": true, "created_at": "2026-01-06T23:34:42.037229-05:00", "signup_ip": null, "last_login_ip": null}', '{"password_temp_generated": true}', None)
+    (2, '2026-01-07 05:02:49.577304', 'admin', 'UPDATE', 'me_security', 1, None, '{"changed": true}', None)
+    (3, '2026-01-07 05:04:12.391139', 'admin', 'UPDATE', 'me', 1, None, None, None)
+    (4, '2026-01-07 05:04:26.438670', 'admin', 'UPDATE', 'me', 1, None, None, None)
+    (5, '2026-01-07 05:11:16.611841', 'chuandro', 'UPDATE', 'usuario', 1, None, '{"password_reset": true}', 1)
+    (6, '2026-01-07 05:12:43.311796', 'u_demo_05', 'UPDATE', 'me_password', 7, None, '{"changed": true}', None)
+    (7, '2026-01-07 05:13:12.292252', 'u_demo_05', 'UPDATE', 'me', 7, None, None, None)
+    (8, '2026-01-07 05:56:06.169866', 'chuandro', 'UPDATE', 'usuario', 8, '{"id": 8, "username": "u_demo_06", "cedula": "99000006", "nombre": "Nombre6", "apellido": "Apellido6", "fecha_nacimiento": "1995-01-06", "edad": 31, "email": "u_demo_06@demo.local", "telefono": "555-01006", "estado": "activo", "nivel": 1, "is_active": true, "created_at": "2026-01-06T23:34:43.763671-05:00", "signup_ip": null, "last_login_ip": null}', '{"id": 8, "username": "u_demo_06", "cedula": "99000006", "nombre": "Nombre6", "apellido": "Apellido6", "fecha_nacimiento": "1995-01-06", "edad": 31, "email": "u_demo_06@demo.local", "telefono": "555-01006", "estado": "activo", "nivel": 1, "is_active": false, "created_at": "2026-01-06T23:34:43.763671-05:00", "signup_ip": null, "last_login_ip": null}', 1)
+    (9, '2026-01-07 05:56:09.035505', 'chuandro', 'UPDATE', 'usuario', 8, '{"id": 8, "username": "u_demo_06", "cedula": "99000006", "nombre": "Nombre6", "apellido": "Apellido6", "fecha_nacimiento": "1995-01-06", "edad": 31, "email": "u_demo_06@demo.local", "telefono": "555-01006", "estado": "activo", "nivel": 1, "is_active": false, "created_at": "2026-01-06T23:34:43.763671-05:00", "signup_ip": null, "last_login_ip": null}', '{"id": 8, "username": "u_demo_06", "cedula": "99000006", "nombre": "Nombre6", "apellido": "Apellido6", "fecha_nacimiento": "1995-01-06", "edad": 31, "email": "u_demo_06@demo.local", "telefono": "555-01006", "estado": "activo", "nivel": 1, "is_active": true, "created_at": "2026-01-06T23:34:43.763671-05:00", "signup_ip": null, "last_login_ip": null}', 1)
+    (10, '2026-01-07 06:10:14.277949', 'chuandro', 'UPDATE', 'usuario', 14, '{"id": 14, "username": "admin_demo_02", "cedula": "99000012", "nombre": "Nombre12", "apellido": "Apellido12", "fecha_nacimiento": "1995-01-12", "edad": 30, "email": "admin_demo_02@demo.local", "telefono": "555-01012", "estado": "activo", "nivel": 0, "is_active": true, "created_at": "2026-01-06T23:34:57.989303-05:00", "signup_ip": null, "last_login_ip": null}', '{"id": 14, "username": "admin_demo_02", "cedula": "99000012", "nombre": "Nombre12", "apellido": "Apellido12", "fecha_nacimiento": "1995-01-12", "edad": 30, "email": "admin_demo_02@demo.local", "telefono": "555-01012", "estado": "pendiente", "nivel": 0, "is_active": true, "created_at": "2026-01-06T23:34:57.989303-05:00", "signup_ip": null, "last_login_ip": null}', 1)
+    (11, '2026-01-07 06:18:11.355765', 'chuandro', 'UPDATE', 'solicitud_usuario', 14, '{"id": 14, "username": "admin_demo_02", "cedula": "99000012", "nombre": "Nombre12", "apellido": "Apellido12", "fecha_nacimiento": "1995-01-12", "edad": 30, "email": "admin_demo_02@demo.local", "telefono": "555-01012", "estado": "pendiente", "nivel": 0, "is_active": true, "created_at": "2026-01-06T23:34:57.989303-05:00", "signup_ip": null, "last_login_ip": null}', '{"estado": "activo"}', 1)
+    (12, '2026-01-07 06:18:35.035803', 'chuandro', 'UPDATE', 'usuario', 13, '{"id": 13, "username": "admin_demo_01", "cedula": "99000011", "nombre": "Nombre11", "apellido": "Apellido11", "fecha_nacimiento": "1995-01-11", "edad": 30, "email": "admin_demo_01@demo.local", "telefono": "555-01011", "estado": "activo", "nivel": 0, "is_active": true, "created_at": "2026-01-06T23:34:55.685935-05:00", "signup_ip": null, "last_login_ip": null}', '{"id": 13, "username": "admin_demo_01", "cedula": "99000011", "nombre": "Nombre11", "apellido": "Apellido11", "fecha_nacimiento": "1995-01-11", "edad": 30, "email": "admin_demo_01@demo.local", "telefono": "555-01011", "estado": "activo", "nivel": 1, "is_active": true, "created_at": "2026-01-06T23:34:55.685935-05:00", "signup_ip": null, "last_login_ip": null}', 1)
+    (13, '2026-01-07 06:37:45.429322', 'chuandro', 'UNBAN', 'ip', 1, None, '{"estado": "ok"}', 1)
+    (14, '2026-01-07 06:45:30.249913', 'mam', 'CREATE', 'solicitud_usuario', 15, None, '{"estado": "pendiente"}', 15)
+    (15, '2026-01-07 06:46:00.840475', 'chuandro', 'UPDATE', 'solicitud_usuario', 15, '{"id": 15, "username": "mam", "cedula": "34343434", "nombre": "dfvdfdf", "apellido": "dfvdff", "fecha_nacimiento": "2024-06-21", "edad": 1, "email": "mamitas@gmaill.com", "telefono": null, "estado": "pendiente", "nivel": 1, "is_active": true, "created_at": "2026-01-07T01:45:30.154239-05:00", "signup_ip": "127.0.0.1", "last_login_ip": null}', '{"estado": "activo"}', 1)
+    (16, '2026-01-07 21:11:40.120423', 'system', 'SECURITY', 'forgot_cooldown', None, None, None, None)
+    (17, '2026-01-07 21:12:54.247239', 'chuandro', 'UNBAN', 'ip', 1, None, '{"estado": "ok"}', 1)
+    (18, '2026-01-07 21:13:39.210665', 'system', 'SECURITY', 'forgot_cooldown', None, None, None, None)
+    (19, '2026-01-07 21:15:44.600343', 'chuandro', 'UNBAN', 'ip', 1, None, '{"estado": "ok"}', 1)
+    (20, '2026-01-07 21:24:15.396953', 'chuandro', 'UPDATE', 'me', 1, None, None, 1)
+    (21, '2026-01-08 19:41:45.892390', 'chuandro', 'UPDATE', 'usuario', 2, '{"id": 2, "username": "demo", "cedula": "1111111111", "nombre": "Usuario", "apellido": "Demo", "fecha_nacimiento": "2000-01-01", "edad": 26, "email": "demo@local", "telefono": "", "estado": "activo", "nivel": 1, "is_active": true, "created_at": "2026-01-06T20:21:18.269370-05:00", "signup_ip": null, "last_login_ip": null}', '{"id": 2, "username": "demo", "cedula": "1111111111", "nombre": "Usuario", "apellido": "Demo", "fecha_nacimiento": "2000-01-01", "edad": 26, "email": "demo@local", "telefono": "", "estado": "pendiente", "nivel": 1, "is_active": true, "created_at": "2026-01-06T20:21:18.269370-05:00", "signup_ip": null, "last_login_ip": null}', 1)
+    (22, '2026-01-08 19:43:16.576589', 'chuandro', 'UPDATE', 'usuario', 7, '{"id": 7, "username": "user", "cedula": "99000005", "nombre": "Nombre5", "apellido": "Apellido5", "fecha_nacimiento": "1995-01-05", "edad": 31, "email": "u_demo_05@demo.local", "telefono": "555-01005", "estado": "activo", "nivel": 1, "is_active": true, "created_at": "2026-01-06T23:34:42.037229-05:00", "signup_ip": null, "last_login_ip": null}', '{"id": 7, "username": "user", "cedula": "99000005", "nombre": "Nombre5", "apellido": "Apellido5", "fecha_nacimiento": "1995-01-05", "edad": 31, "email": "u_demo_05@demo.local", "telefono": "555-01005", "estado": "pendiente", "nivel": 1, "is_active": true, "created_at": "2026-01-06T23:34:42.037229-05:00", "signup_ip": null, "last_login_ip": null}', 1)
+    (23, '2026-01-08 20:23:40.730597', 'user', 'UPDATE', 'me_security', 7, None, '{"changed": true}', 7)
+    (24, '2026-01-08 20:26:22.627469', 'chuandro', 'UPDATE', 'usuario', 8, '{"id": 8, "username": "u_demo_06", "nombre": "Nombre6", "apellido": "Apellido6", "fecha_nacimiento": "1995-01-06", "edad": 31, "email": "u_demo_06@demo.local", "telefono": "555-01006", "estado": "activo", "nivel": 1, "is_active": true, "created_at": "2026-01-06T23:34:43.763671-05:00", "signup_ip": null, "last_login_ip": null}', '{"password_temp_generated": true}', 1)
+    (25, '2026-01-08 20:28:16.393044', 'u_demo_06', 'UPDATE', 'me_security', 8, None, '{"changed": true}', 8)
+    (26, '2026-01-08 20:28:26.461407', 'u_demo_06', 'UPDATE', 'me_security', 8, None, '{"changed": true}', 8)
+    (27, '2026-01-08 20:29:48.910841', 'u_demo_06', 'UPDATE', 'me_password', 8, None, '{"changed": true}', 8)
+    (28, '2026-01-08 20:29:58.165445', 'u_demo_06', 'UPDATE', 'me', 8, None, None, None)
+    (29, '2026-01-08 20:30:20.537727', 'u_demo_06', 'UPDATE', 'me_security', 8, None, '{"changed": true}', None)
+    (30, '2026-01-11 02:09:37.952264', 'chuandro', 'CREATE', 'material', 4, None, '{"id": 4, "nombre": "Aceite (comestible)", "tipo": "Comida", "unidad": "unidad", "precio": "1.00", "vendible": true, "precio_venta": "3.00", "ubicacion": "Almacen", "cantidad": "10.000", "en_uso": "0.000", "minimo": "0.000", "propio": false, "updated_at": "2026-01-10T21:09:37.699114-05:00", "created_at": "2026-01-10T21:09:37.699250-05:00"}', 1)
+    (31, '2026-01-11 02:10:02.215182', 'chuandro', 'UPDATE', 'material', 4, '{"id": 4, "nombre": "Aceite (comestible)", "tipo": "Comida", "unidad": "unidad", "precio": "1.00", "vendible": true, "precio_venta": "3.00", "ubicacion": "Almacen", "cantidad": "10.000", "en_uso": "0.000", "minimo": "0.000", "propio": false, "updated_at": "2026-01-10T21:09:37.699114-05:00", "created_at": "2026-01-10T21:09:37.699250-05:00"}', '{"id": 4, "nombre": "Aceite (comestible)", "tipo": "Comida", "unidad": "unidad", "precio": "1.00", "vendible": true, "precio_venta": "3.00", "ubicacion": "Almacen", "cantidad": "10.000", "en_uso": "0.000", "minimo": "0.000", "propio": true, "updated_at": "2026-01-10T21:10:02.000655-05:00", "created_at": "2026-01-10T21:09:37.699250-05:00"}', 1)
+    (32, '2026-01-11 02:10:19.707051', 'chuandro', 'UPDATE', 'material', 4, '{"id": 4, "nombre": "Aceite (comestible)", "tipo": "Comida", "unidad": "unidad", "precio": "1.00", "vendible": true, "precio_venta": "3.00", "ubicacion": "Almacen", "cantidad": "10.000", "en_uso": "0.000", "minimo": "0.000", "propio": true, "updated_at": "2026-01-10T21:10:02.000655-05:00", "created_at": "2026-01-10T21:09:37.699250-05:00"}', '{"id": 4, "nombre": "Aceite (comestible)", "tipo": "Comida", "unidad": "unidad", "precio": "1.00", "vendible": true, "precio_venta": "3.00", "ubicacion": "Bodega", "cantidad": "10.000", "en_uso": "0.000", "minimo": "0.000", "propio": false, "updated_at": "2026-01-10T21:10:19.497613-05:00", "created_at": "2026-01-10T21:09:37.699250-05:00"}', 1)
+    (33, '2026-01-11 02:10:57.119325', 'chuandro', 'UPDATE', 'material', 4, '{"id": 4, "nombre": "Aceite (comestible)", "tipo": "Comida", "unidad": "unidad", "precio": "1.00", "vendible": true, "precio_venta": "3.00", "ubicacion": "Bodega", "cantidad": "10.000", "en_uso": "0.000", "minimo": "0.000", "propio": false, "updated_at": "2026-01-10T21:10:19.497613-05:00", "created_at": "2026-01-10T21:09:37.699250-05:00"}', '{"id": 4, "nombre": "Aceite (comestible)", "tipo": "Comida", "unidad": "litro", "precio": "1.00", "vendible": true, "precio_venta": "3.00", "ubicacion": "Almacen", "cantidad": "10.000", "en_uso": "0.000", "minimo": "0.000", "propio": false, "updated_at": "2026-01-10T21:10:56.927757-05:00", "created_at": "2026-01-10T21:09:37.699250-05:00"}', 1)
+    (34, '2026-01-11 02:11:13.560788', 'chuandro', 'UPDATE', 'material', 4, '{"id": 4, "nombre": "Aceite (comestible)", "tipo": "Comida", "unidad": "litro", "precio": "1.00", "vendible": true, "precio_venta": "3.00", "ubicacion": "Almacen", "cantidad": "10.000", "en_uso": "0.000", "minimo": "0.000", "propio": false, "updated_at": "2026-01-10T21:10:56.927757-05:00", "created_at": "2026-01-10T21:09:37.699250-05:00"}', '{"id": 4, "nombre": "Aceite (comestible)", "tipo": "Comida", "unidad": "unidad", "precio": "1.00", "vendible": true, "precio_venta": "3.00", "ubicacion": "Almacen", "cantidad": "10.000", "en_uso": "0.000", "minimo": "0.000", "propio": false, "updated_at": "2026-01-10T21:11:13.357730-05:00", "created_at": "2026-01-10T21:09:37.699250-05:00"}', 1)
+    (35, '2026-01-11 02:21:39.685656', 'chuandro', 'UPDATE', 'material', 4, '{"id": 4, "nombre": "Aceite (comestible)", "tipo": "Comida", "unidad": "unidad", "precio": "1.00", "vendible": true, "precio_venta": "3.00", "ubicacion": "Almacen", "cantidad": "10.000", "en_uso": "0.000", "minimo": "0.000", "propio": false, "updated_at": "2026-01-10T21:11:13.357730-05:00", "created_at": "2026-01-10T21:09:37.699250-05:00"}', '{"id": 4, "nombre": "Aceite (comestible)", "tipo": "Comida", "unidad": "unidad", "precio": "1.00", "vendible": true, "precio_venta": "3.00", "ubicacion": "Almacen", "cantidad": "10.000", "en_uso": "0.000", "minimo": "0.000", "propio": false, "updated_at": "2026-01-10T21:21:39.530703-05:00", "created_at": "2026-01-10T21:09:37.699250-05:00"}', 1)
+    (36, '2026-01-11 02:21:45.344072', 'chuandro', 'UPDATE', 'material', 4, '{"id": 4, "nombre": "Aceite (comestible)", "tipo": "Comida", "unidad": "unidad", "precio": "1.00", "vendible": true, "precio_venta": "3.00", "ubicacion": "Almacen", "cantidad": "10.000", "en_uso": "0.000", "minimo": "0.000", "propio": false, "updated_at": "2026-01-10T21:21:39.530703-05:00", "created_at": "2026-01-10T21:09:37.699250-05:00"}', '{"id": 4, "nombre": "Aceite (comestible)", "tipo": "Comida", "unidad": "unidad", "precio": "1.00", "vendible": true, "precio_venta": "3.00", "ubicacion": "Almacen", "cantidad": "10.000", "en_uso": "0.000", "minimo": "0.000", "propio": true, "updated_at": "2026-01-10T21:21:45.097695-05:00", "created_at": "2026-01-10T21:09:37.699250-05:00"}', 1)
+
+Tabla: api_iprecord
+  Campos:
+    - id (INTEGER)
+    - ip_hash (varchar(64))
+    - ip_enc (TEXT)
+    - estado (varchar(20))
+    - cooldown_until (datetime)
+    - login_stage (INTEGER)
+    - login_fails (INTEGER)
+    - forgot_round (INTEGER)
+    - forgot_step (INTEGER)
+    - forgot_fail1 (INTEGER)
+    - forgot_fail2 (INTEGER)
+    - geo_country (varchar(40))
+    - geo_region (varchar(80))
+    - last_seen (datetime)
+    - created_at (datetime)
+  Registros (máx 1000):
+    (1, '78c4e1fb75d232f6f91f0ef3f7e987b5c8927f87d4c90cbfbafba36302ac21ed', 'gAAAAABpXafJSd_DLeKTloL1bo3Qp4yin8H-RunrIz8fITHLz89LWEWfOsv5xjGbRGvKAHWr9E20bgdrL1AvUySkO2mrCPqKgA==', 'ok', None, 0, 0, 0, 1, 0, 0, 'LOCAL', '127.0.0.1', '2026-01-08 21:41:20.455765', '2026-01-07 00:24:46.837259')
+
+Tabla: api_material
+  Campos:
+    - id (INTEGER)
+    - nombre (varchar(200))
+    - tipo (varchar(120))
+    - precio (decimal)
+    - ubicacion (varchar(200))
+    - cantidad (decimal)
+    - minimo (decimal)
+    - propio (bool)
+    - updated_at (datetime)
+    - created_at (datetime)
+    - en_uso (decimal)
+    - unidad (varchar(40))
+    - precio_venta (decimal)
+    - vendible (bool)
+  Registros (máx 1000):
+    (1, 'Guantes', 'EPP', 25000, 'Bodega', 25, 10, 1, '2026-01-07 00:24:31.454842', '2026-01-07 00:24:31.454888', 0, 'unidad', 0, 0)
+    (2, 'Taladro', 'Herramienta', 250000, 'Taller', 5, 2, 0, '2026-01-07 00:24:31.457011', '2026-01-07 00:24:31.457038', 0, 'unidad', 0, 0)
+    (3, 'Cinta métrica', 'Herramienta', 12000, 'Taller', 20, 5, 0, '2026-01-07 00:24:31.458159', '2026-01-07 00:24:31.458181', 0, 'unidad', 0, 0)
+    (4, 'Aceite (comestible)', 'Comida', 1, 'Almacen', 10, 0, 1, '2026-01-11 02:21:45.097695', '2026-01-11 02:09:37.699250', 0, 'unidad', 3, 1)
+
+Tabla: api_materialmovimiento
+  Campos:
+    - id (INTEGER)
+    - ts (datetime)
+    - actor (varchar(80))
+    - tipo (varchar(20))
+    - cantidad (decimal)
+    - nota (varchar(240))
+    - material_id (bigint)
+    - uso_id (bigint)
+  Relaciones (foreign keys):
+    - uso_id -> api_materialuso.id
+    - material_id -> api_material.id
+  (Sin registros)
+
+Tabla: api_materialuso
+  Campos:
+    - id (INTEGER)
+    - created_at (datetime)
+    - closed_at (datetime)
+    - responsable (varchar(120))
+    - destino (varchar(200))
+    - notas (TEXT)
+    - estado (varchar(20))
+    - creado_por_id (bigint)
+  Relaciones (foreign keys):
+    - creado_por_id -> api_usuario.id
+  (Sin registros)
+
+Tabla: api_materialusoitem
+  Campos:
+    - id (INTEGER)
+    - cantidad_salida (decimal)
+    - cantidad_devuelta (decimal)
+    - cantidad_consumida (decimal)
+    - cantidad_rota (decimal)
+    - cantidad_perdida (decimal)
+    - material_id (bigint)
+    - uso_id (bigint)
+  Relaciones (foreign keys):
+    - uso_id -> api_materialuso.id
+    - material_id -> api_material.id
+  (Sin registros)
+
+Tabla: api_materialventa
+  Campos:
+    - id (INTEGER)
+    - created_at (datetime)
+    - notas (TEXT)
+    - creado_por_id (bigint)
+  Relaciones (foreign keys):
+    - creado_por_id -> api_usuario.id
+  (Sin registros)
+
+Tabla: api_materialventaitem
+  Campos:
+    - id (INTEGER)
+    - cantidad (decimal)
+    - costo_unitario (decimal)
+    - precio_venta_unitario (decimal)
+    - material_id (bigint)
+    - venta_id (bigint)
+  Relaciones (foreign keys):
+    - venta_id -> api_materialventa.id
+    - material_id -> api_material.id
+  (Sin registros)
+
+Tabla: api_usuario
+  Campos:
+    - id (INTEGER)
+    - username (varchar(80))
+    - password_hash (varchar(200))
+    - nombre (varchar(120))
+    - apellido (varchar(120))
+    - fecha_nacimiento (date)
+    - email (varchar(254))
+    - telefono (varchar(30))
+    - fecha_nacimiento_change_count (smallint unsigned)
+    - estado (varchar(20))
+    - nivel (INTEGER)
+    - is_active (bool)
+    - sec_q1 (varchar(200))
+    - sec_a1_hash (varchar(200))
+    - sec_q2 (varchar(200))
+    - sec_a2_hash (varchar(200))
+    - signup_ip_hash (varchar(64))
+    - signup_ip_enc (TEXT)
+    - last_login_ip_hash (varchar(64))
+    - last_login_ip_enc (TEXT)
+    - created_at (datetime)
+  Registros (máx 1000):
+    (1, 'chuandro', '$2b$12$9ivge3lw7q.82qG2mHXIm.yFKEG4QiC7GqNfHGuM1fnjKBGD5KB5W', 'Jesús Alejandro', 'Rodriguez Morales', '2005-01-15', 'jesusarodriguezm2005@gmail.com', '04128312628', 1, 'activo', 0, 1, 'color favorito?', '$2b$12$01beqMWJG8.7v1vtTxrROOPktWHpjovxPcXRfP..L5GFwQDiofeRK', 'comida favorita?', '$2b$12$u1bPxZMxPhTXvd4D5uPod.I4NhHAJh54GRNbGNkIhIz4HDJX2Nnfm', '78c4e1fb75d232f6f91f0ef3f7e987b5c8927f87d4c90cbfbafba36302ac21ed', 'gAAAAABpXgEKoKgykPScBFhuNnpTXpdnc1EyJXzx5e_f1rOZw998jF9p3ysvCiTLGVhkZIZYfMttyB6jOxy1gsDho2RN1TBU8w==', None, None, '2026-01-07 01:21:16.355364')
+    (2, 'demo', '$2b$12$KuxHa0ZW/Nn0dY529hQup.xhTy3DcPhiSQXMzXHxjHIBeROPi9ZnG', 'Usuario', 'Demo', '2000-01-01', 'demo@local', '', 0, 'pendiente', 1, 1, 'Nombre de tu primera mascota?', '$2b$12$7/mzGoJg7RiZhIuKXXJXVeevJJxeAnUMZrml/9bv3ChQozuDtb2sa', 'Ciudad donde naciste?', '$2b$12$6oDIXnwUEIO67A59418ixeOrMKlTNtxP9vJfWnihjqKAB.iigKQ3e', None, None, None, None, '2026-01-07 01:21:18.269370')
+    (3, 'u_demo_01', '$2b$12$neqUGHGYaRki0Hi/Y1aEyunjeeySVReRUXWxLHzFOBvY4yupGSSuO', 'Nombre1', 'Apellido1', '1995-01-01', 'u_demo_01@demo.local', '555-01001', 0, 'pendiente', 1, 1, 'Pregunta 1', '$2b$12$RRUSV.2jwo8Y/MSJyzfG/uV54Tth82nQn3ggmD7620HN7Egm8hjsu', 'Pregunta 2', '$2b$12$p9uIsj4VHIG0iN4SYB52oelgrbp37lGbx39H/9/sbNBVRbKPctu1G', None, None, None, None, '2026-01-07 04:34:35.927509')
+    (4, 'u_demo_02', '$2b$12$cJ499m6srnXEaRRv2tYg2.ndF8dcO9D9q8Bdjxu/YXt3u/WYUwqF2', 'Nombre2', 'Apellido2', '1995-01-02', 'u_demo_02@demo.local', '555-01002', 0, 'pendiente', 1, 1, 'Pregunta 1', '$2b$12$rimZuY/qRi6VI7WAhtpNeuHV1Sc03FKs48gSS5XR.tojzA6MHPrSe', 'Pregunta 2', '$2b$12$dHHLgK2o9l/x1Cg5.1z2F.c0QJKQQ/mASR41Uq0Ran.T3N1Uv5b46', None, None, None, None, '2026-01-07 04:34:37.403487')
+    (5, 'u_demo_03', '$2b$12$XpODRDMZ4sczkK7DILCCM.qmhJVfNwerd1muiAhoFp1F0oeWtRfna', 'Nombre3', 'Apellido3', '1995-01-03', 'u_demo_03@demo.local', '555-01003', 0, 'rechazado', 1, 1, 'Pregunta 1', '$2b$12$P4CVTXVcSn9br.XzXT2G5.4DkeoVz.C4wQa25tT9v1xHhSvdvDW/C', 'Pregunta 2', '$2b$12$u2xUN8bfbVlxzpJl3xLtmuGKHsnONDpFQSDMqP4rI3314JiGUIqeu', None, None, None, None, '2026-01-07 04:34:38.946631')
+    (6, 'u_demo_04', '$2b$12$1StAvdOkB35trSoF9JlKOuZr0Gu9D1U3enndRt.RG/D/SjxBuuk8G', 'Nombre4', 'Apellido4', '1995-01-04', 'u_demo_04@demo.local', '555-01004', 0, 'rechazado', 1, 1, 'Pregunta 1', '$2b$12$MhoFiBcxQc8AE0mZ.nFw0emgo9IXk8GkLEe0NHlrtQ0oHi9c8w1My', 'Pregunta 2', '$2b$12$UKeoVnxUSyiRnZeptrCNIuw9IFGUrIwetgQJI0iyem6RCGWv.UywG', None, None, None, None, '2026-01-07 04:34:40.512112')
+    (7, 'user', '$2b$12$0n8oIyYxQJK5jK7pRpd.m.CMqBUePwd1Bp8ySj/vtn35Hmv9kaTKO', 'Nombre5', 'Apellido5', '1995-01-05', 'u_demo_05@demo.local', '555-01005', 0, 'pendiente', 1, 1, 'como me llamo?', '$2b$12$zzaANi3O.Czg1YjsN23CM.0nW3nPPG4Ml5qs7ASnKF6cgXg7NcsP2', 'si?', '$2b$12$nRy6QpGHwXfJGXmJjdk9lOM3C3H/ICTqs8d.oAkPTbapAUj0besgS', None, None, None, None, '2026-01-07 04:34:42.037229')
+    (8, 'usuario', '$2b$12$Q4QPpbPqfyKnwbVaSXD7/uZ7pByx7Xn7RDg487ek.1oxSBxcanUIK', 'Nombre6', 'Apellido6', '1995-01-06', 'u_demo_06@demo.local', '555-01006', 0, 'activo', 1, 1, 'hijos?', '$2b$12$fMypPRbFsQf3bEsglLgbvubr0JSFXKK1tDXS.0Ufb678WKlCC7miq', 'perros?', '$2b$12$94ZJTctPOLVbLnHSrQ29i.yUDqgR4kHj33vdTSJfwtrgwrBqbRM2G', None, None, None, None, '2026-01-07 04:34:43.763671')
+    (9, 'u_demo_07', '$2b$12$D2Uw9dpOQeQjm9aRLj9UoeMlwLQzRz4obpd6n9BpC3IXAYHrJ7HU.', 'Nombre7', 'Apellido7', '1995-01-07', 'u_demo_07@demo.local', '555-01007', 0, 'activo', 1, 1, 'Pregunta 1', '$2b$12$vBpKRKes56neHH/GlrrxVumZu9Pi3XbbXzW/JjKuZK3rXGflOyRLS', 'Pregunta 2', '$2b$12$nZZ.LIYb3FZXCb5rLB7g1OMNam0rgxlLKh1xRrozUHgNqVGO9IpIa', None, None, None, None, '2026-01-07 04:34:45.472066')
+    (10, 'u_demo_08', '$2b$12$3uWbVbdgaGvJqiDfMmrc6.aE68v03GHEinqM9frtzB/uMZDYogQuW', 'Nombre8', 'Apellido8', '1995-01-08', 'u_demo_08@demo.local', '555-01008', 0, 'activo', 1, 1, 'Pregunta 1', '$2b$12$9WXLEB5KwGrLGGkC0mjs2eajBG4S21Q8nQ9z1dQIWBfrQN5ZXjmA2', 'Pregunta 2', '$2b$12$NqQ7nEsUJsacu5HUfYPJXuaeRgBvRRsbSXiVrPJuMgo5dH5TSqrda', None, None, None, None, '2026-01-07 04:34:47.919301')
+    (11, 'u_demo_09', '$2b$12$/3aQGJBd3b7oc49MG1orYOL2L2SJRIShBwYT0l0yX5qF/qp2qiELK', 'Nombre9', 'Apellido9', '1995-01-09', 'u_demo_09@demo.local', '555-01009', 0, 'activo', 1, 1, 'Pregunta 1', '$2b$12$nYP5G/WuMHfjqqIHhS8a.u0LDvEq3KI3onfRD7ogWYcuu179tQuve', 'Pregunta 2', '$2b$12$bpEYoGLDPlhhK3XS0HtMAuABzhmlNRrwauAyCsFzp3MpMYor50Z7y', None, None, None, None, '2026-01-07 04:34:49.838294')
+    (12, 'u_demo_10', '$2b$12$RC6vyXOzyT/WPUddNF2wleBVV6j57pKxWYHqGNRyH2QTK3CYbpeia', 'Nombre10', 'Apellido10', '1995-01-10', 'u_demo_10@demo.local', '555-01010', 0, 'activo', 1, 1, 'Pregunta 1', '$2b$12$sUF0O7tAASRh0qyXagSHVeXDQH6Y/yvmyJpCKcNaAMu2qoIc7946O', 'Pregunta 2', '$2b$12$K7VBb/fFy.IA.pjereMuJeZoY3iEIekVJH8uIB0ADykldU3H8lMsW', None, None, None, None, '2026-01-07 04:34:53.805552')
+    (13, 'admin_demo_01', '$2b$12$JlLrVJe3BzUJHb361nVzQerwy5D2GNKA.BUpPnWE7IuSWQsLNyURe', 'Nombre11', 'Apellido11', '1995-01-11', 'admin_demo_01@demo.local', '555-01011', 0, 'activo', 1, 1, 'Pregunta 1', '$2b$12$Zxb8VzbuQTqE6fFThXCqouJRxHzDtbe0mA7zSYEfEIyPeoGKkDlHq', 'Pregunta 2', '$2b$12$rmctwU9LtNIRFTGyhQbHlOGQkF4F.j4yCKoxRyQdOkxaMGd8oDeTK', None, None, None, None, '2026-01-07 04:34:55.685935')
+    (14, 'admin_demo_02', '$2b$12$Bg24ELVtiPF6O82PHbBAtuL9...pk0YCS7LXGa6.EdCBMVAp17Che', 'Nombre12', 'Apellido12', '1995-01-12', 'admin_demo_02@demo.local', '555-01012', 0, 'activo', 0, 1, 'Pregunta 1', '$2b$12$O5XP/o8hfNRKskIsh4rod.cVk9pRMp8zl5orH4ZTUKloHzhiFfFKS', 'Pregunta 2', '$2b$12$LouhHmIKPqsvvO2Gbwe/lOjso1flJMkdAjSMLcgKmt2PGyLMg7JgW', None, None, None, None, '2026-01-07 04:34:57.989303')
+    (15, 'mam', '$2b$12$nEQU3cDKcrM6n2VBXKr/VOE7sqHdAspK9HzPpdwFwDshGBJn5pJ/C', 'dfvdfdf', 'dfvdff', '2024-06-21', 'mamitas@gmaill.com', None, 0, 'activo', 1, 1, 'color favorito?', '$2b$12$ER3Iqh6Z4MbHM41CeGDKCOyaq7Bp4aU3FFuJjzr5ra75gNLuJDQmu', 'comida favorita?', '$2b$12$EBkizTV2n8weWaigbmvcEeRUVm.Wvu4h7yXOtYa3Bykx1C0m0yCey', None, None, None, None, '2026-01-07 06:45:30.154239')
+
+Tabla: auth_group
+  Campos:
+    - id (INTEGER)
+    - name (varchar(150))
+  (Sin registros)
+
+Tabla: auth_group_permissions
+  Campos:
+    - id (INTEGER)
+    - group_id (INTEGER)
+    - permission_id (INTEGER)
+  Relaciones (foreign keys):
+    - permission_id -> auth_permission.id
+    - group_id -> auth_group.id
+  (Sin registros)
+
+Tabla: auth_permission
+  Campos:
+    - id (INTEGER)
+    - content_type_id (INTEGER)
+    - codename (varchar(100))
+    - name (varchar(255))
+  Relaciones (foreign keys):
+    - content_type_id -> django_content_type.id
+  Registros (máx 1000):
+    (1, 1, 'add_logentry', 'Can add log entry')
+    (2, 1, 'change_logentry', 'Can change log entry')
+    (3, 1, 'delete_logentry', 'Can delete log entry')
+    (4, 1, 'view_logentry', 'Can view log entry')
+    (5, 2, 'add_permission', 'Can add permission')
+    (6, 2, 'change_permission', 'Can change permission')
+    (7, 2, 'delete_permission', 'Can delete permission')
+    (8, 2, 'view_permission', 'Can view permission')
+    (9, 3, 'add_group', 'Can add group')
+    (10, 3, 'change_group', 'Can change group')
+    (11, 3, 'delete_group', 'Can delete group')
+    (12, 3, 'view_group', 'Can view group')
+    (13, 4, 'add_user', 'Can add user')
+    (14, 4, 'change_user', 'Can change user')
+    (15, 4, 'delete_user', 'Can delete user')
+    (16, 4, 'view_user', 'Can view user')
+    (17, 5, 'add_contenttype', 'Can add content type')
+    (18, 5, 'change_contenttype', 'Can change content type')
+    (19, 5, 'delete_contenttype', 'Can delete content type')
+    (20, 5, 'view_contenttype', 'Can view content type')
+    (21, 6, 'add_session', 'Can add session')
+    (22, 6, 'change_session', 'Can change session')
+    (23, 6, 'delete_session', 'Can delete session')
+    (24, 6, 'view_session', 'Can view session')
+    (25, 7, 'add_iprecord', 'Can add ip record')
+    (26, 7, 'change_iprecord', 'Can change ip record')
+    (27, 7, 'delete_iprecord', 'Can delete ip record')
+    (28, 7, 'view_iprecord', 'Can view ip record')
+    (29, 8, 'add_auditlog', 'Can add audit log')
+    (30, 8, 'change_auditlog', 'Can change audit log')
+    (31, 8, 'delete_auditlog', 'Can delete audit log')
+    (32, 8, 'view_auditlog', 'Can view audit log')
+    (33, 9, 'add_material', 'Can add material')
+    (34, 9, 'change_material', 'Can change material')
+    (35, 9, 'delete_material', 'Can delete material')
+    (36, 9, 'view_material', 'Can view material')
+    (37, 10, 'add_profile', 'Can add profile')
+    (38, 10, 'change_profile', 'Can change profile')
+    (39, 10, 'delete_profile', 'Can delete profile')
+    (40, 10, 'view_profile', 'Can view profile')
+    (41, 11, 'add_usuario', 'Can add usuario')
+    (42, 11, 'change_usuario', 'Can change usuario')
+    (43, 11, 'delete_usuario', 'Can delete usuario')
+    (44, 11, 'view_usuario', 'Can view usuario')
+    (45, 12, 'add_materialuso', 'Can add material uso')
+    (46, 12, 'change_materialuso', 'Can change material uso')
+    (47, 12, 'delete_materialuso', 'Can delete material uso')
+    (48, 12, 'view_materialuso', 'Can view material uso')
+    (49, 13, 'add_materialmovimiento', 'Can add material movimiento')
+    (50, 13, 'change_materialmovimiento', 'Can change material movimiento')
+    (51, 13, 'delete_materialmovimiento', 'Can delete material movimiento')
+    (52, 13, 'view_materialmovimiento', 'Can view material movimiento')
+    (53, 14, 'add_materialusoitem', 'Can add material uso item')
+    (54, 14, 'change_materialusoitem', 'Can change material uso item')
+    (55, 14, 'delete_materialusoitem', 'Can delete material uso item')
+    (56, 14, 'view_materialusoitem', 'Can view material uso item')
+    (57, 15, 'add_materialventa', 'Can add material venta')
+    (58, 15, 'change_materialventa', 'Can change material venta')
+    (59, 15, 'delete_materialventa', 'Can delete material venta')
+    (60, 15, 'view_materialventa', 'Can view material venta')
+    (61, 16, 'add_materialventaitem', 'Can add material venta item')
+    (62, 16, 'change_materialventaitem', 'Can change material venta item')
+    (63, 16, 'delete_materialventaitem', 'Can delete material venta item')
+    (64, 16, 'view_materialventaitem', 'Can view material venta item')
+
+Tabla: auth_user
+  Campos:
+    - id (INTEGER)
+    - password (varchar(128))
+    - last_login (datetime)
+    - is_superuser (bool)
+    - username (varchar(150))
+    - last_name (varchar(150))
+    - email (varchar(254))
+    - is_staff (bool)
+    - is_active (bool)
+    - date_joined (datetime)
+    - first_name (varchar(150))
+  Registros (máx 1000):
+    (1, 'pbkdf2_sha256$1000000$6wVp3FcTTHbAUd9Bo4ae4k$qwMfaIQbLOXPUMjL6PON2nAaoftCyan2/+l5PKcS5o4=', None, 1, 'admin', '', 'admin@local', 1, 1, '2026-01-07 00:24:25.135987', '')
+    (2, 'pbkdf2_sha256$1000000$3pcvK6ltJIdFwzpud8ZiKL$fv1E7XR9oZHpvzf4UKIsmMODrumA0Ycv4S9x8v6lEzA=', None, 0, 'demo', '', 'demo@local', 0, 1, '2026-01-07 00:24:28.575766', '')
+
+Tabla: auth_user_groups
+  Campos:
+    - id (INTEGER)
+    - user_id (INTEGER)
+    - group_id (INTEGER)
+  Relaciones (foreign keys):
+    - group_id -> auth_group.id
+    - user_id -> auth_user.id
+  (Sin registros)
+
+Tabla: auth_user_user_permissions
+  Campos:
+    - id (INTEGER)
+    - user_id (INTEGER)
+    - permission_id (INTEGER)
+  Relaciones (foreign keys):
+    - permission_id -> auth_permission.id
+    - user_id -> auth_user.id
+  (Sin registros)
+
+Tabla: django_admin_log
+  Campos:
+    - id (INTEGER)
+    - object_id (TEXT)
+    - object_repr (varchar(200))
+    - action_flag (smallint unsigned)
+    - change_message (TEXT)
+    - content_type_id (INTEGER)
+    - user_id (INTEGER)
+    - action_time (datetime)
+  Relaciones (foreign keys):
+    - user_id -> auth_user.id
+    - content_type_id -> django_content_type.id
+  (Sin registros)
+
+Tabla: django_content_type
+  Campos:
+    - id (INTEGER)
+    - app_label (varchar(100))
+    - model (varchar(100))
+  Registros (máx 1000):
+    (1, 'admin', 'logentry')
+    (2, 'auth', 'permission')
+    (3, 'auth', 'group')
+    (4, 'auth', 'user')
+    (5, 'contenttypes', 'contenttype')
+    (6, 'sessions', 'session')
+    (7, 'api', 'iprecord')
+    (8, 'api', 'auditlog')
+    (9, 'api', 'material')
+    (10, 'api', 'profile')
+    (11, 'api', 'usuario')
+    (12, 'api', 'materialuso')
+    (13, 'api', 'materialmovimiento')
+    (14, 'api', 'materialusoitem')
+    (15, 'api', 'materialventa')
+    (16, 'api', 'materialventaitem')
+
+Tabla: django_migrations
+  Campos:
+    - id (INTEGER)
+    - app (varchar(255))
+    - name (varchar(255))
+    - applied (datetime)
+  Registros (máx 1000):
+    (1, 'contenttypes', '0001_initial', '2026-01-06 23:58:56.601351')
+    (2, 'auth', '0001_initial', '2026-01-06 23:58:56.860566')
+    (3, 'admin', '0001_initial', '2026-01-06 23:58:57.064230')
+    (4, 'admin', '0002_logentry_remove_auto_add', '2026-01-06 23:58:57.167108')
+    (5, 'admin', '0003_logentry_add_action_flag_choices', '2026-01-06 23:58:57.271929')
+    (6, 'api', '0001_initial', '2026-01-06 23:58:57.621133')
+    (7, 'contenttypes', '0002_remove_content_type_name', '2026-01-06 23:58:57.794331')
+    (8, 'auth', '0002_alter_permission_name_max_length', '2026-01-06 23:58:57.911736')
+    (9, 'auth', '0003_alter_user_email_max_length', '2026-01-06 23:58:58.043569')
+    (10, 'auth', '0004_alter_user_username_opts', '2026-01-06 23:58:58.170769')
+    (11, 'auth', '0005_alter_user_last_login_null', '2026-01-06 23:58:58.262256')
+    (12, 'auth', '0006_require_contenttypes_0002', '2026-01-06 23:58:58.360509')
+    (13, 'auth', '0007_alter_validators_add_error_messages', '2026-01-06 23:58:58.508312')
+    (14, 'auth', '0008_alter_user_username_max_length', '2026-01-06 23:58:58.920532')
+    (15, 'auth', '0009_alter_user_last_name_max_length', '2026-01-06 23:58:59.094771')
+    (16, 'auth', '0010_alter_group_name_max_length', '2026-01-06 23:58:59.239395')
+    (17, 'auth', '0011_update_proxy_permissions', '2026-01-06 23:58:59.375828')
+    (18, 'auth', '0012_alter_user_first_name_max_length', '2026-01-06 23:58:59.483310')
+    (19, 'sessions', '0001_initial', '2026-01-06 23:58:59.632506')
+    (20, 'api', '0002_usuario_refactor', '2026-01-07 01:20:38.461801')
+    (21, 'api', '0003_auditlog_actor_id', '2026-01-07 05:51:24.893158')
+    (22, 'api', '0004_auditlog_actor_id_backfill_ci', '2026-01-07 05:55:13.157132')
+    (23, 'api', '0005_remove_usuario_cedula', '2026-01-08 20:15:28.422474')
+    (24, 'api', '0006_material_en_uso_material_unidad_and_more', '2026-01-10 21:47:59.664476')
+    (25, 'api', '0007_material_precio_venta_material_vendible_and_more', '2026-01-10 23:22:02.745677')
+
+Tabla: django_session
+  Campos:
+    - session_key (varchar(40))
+    - session_data (TEXT)
+    - expire_date (datetime)
+  Registros (máx 1000):
+    ('uj6baey6lnzpzw2ehuipgwzf5m42kjb8', 'eyJ1c3VhcmlvX2lkIjoxfQ:1vdJWl:Rqis3gjhY8FY_tUGcnye3XhoKOrnmiOeWhe_r0KWy6g', '2026-01-21 02:44:03.162998')
+    ('5it0x8sx5baircgoapwmt3pobbjg8g52', 'eyJ1c3VhcmlvX2lkIjoxfQ:1vdJaX:7zwRDwTSl_8N_dF5lAXQzPwDsbElBrOpCE3FBP0yGxA', '2026-01-21 02:47:57.637986')
+    ('li1ye5potl2fn6v0uwu3rqt2y7b1facb', 'eyJ1c3VhcmlvX2lkIjoxNX0:1vdNJ3:Ksxa4nJTMDuHMhtZm3cAfX_yL6FnnEdraZVFOh9VEQ8', '2026-01-21 06:46:09.163537')
+    ('mqfl2cptdikhzdp6kg85doa7ljlx6ugc', 'eyJ1c3VhcmlvX2lkIjoxfQ:1vdJs8:opmauZJwRJ9Nt77Kb98wz7jo8umSRZB0wUl0J29z3yw', '2026-01-21 03:06:08.099379')
+    ('uzs1mgpb76jxf7aht7h3tzselvneopqe', 'eyJ1c3VhcmlvX2lkIjoxfQ:1vdJsI:97RcHW6bleqCMpSC2h90y73wMacHNo0fMWKkaVhTDOg', '2026-01-21 03:06:18.005777')
+    ('e7y5omdncgdbyy2r1w4fsitnvhak3fm7', 'eyJ1c3VhcmlvX2lkIjoxfQ:1vdJsV:c7zrvCkpFlr2fs_mGYYs1PWE9NLCeMI4b4R4qJxtMd0', '2026-01-21 03:06:31.624329')
+    ('9uenljdctduil17dih9meo9yc70oxw7d', 'eyJ1c3VhcmlvX2lkIjoxfQ:1vdJtS:lp763sSnF_GGqYmITXaFxBdnrF6gdTPQ0vMPobb5br0', '2026-01-21 03:07:30.437062')
+    ('9xmvwzfc9sp3nnamfspnhhwzwz159vul', 'eyJ1c3VhcmlvX2lkIjoxfQ:1viP5n:CzKZjY2nXOyVSOXjyQ_CwkhCYwO5PKH7PuK2c1Ro0a4', '2026-02-04 03:41:15.006646')
+    ('70n1884zshu9lqs4wq3wdni2bypkuedj', 'eyJ1c3VhcmlvX2lkIjoxfQ:1vdd5Y:sQo6gMtNx1jFB27CIWm-7Mqd-pe-38l3XWCX-MTBmOo', '2026-01-21 23:37:16.162803')
+
+Tabla: sqlite_sequence
+  Campos:
+    - name ()
+    - seq ()
+  Registros (máx 1000):
+    ('django_migrations', 25)
+    ('django_admin_log', 0)
+    ('django_content_type', 16)
+    ('auth_permission', 64)
+    ('auth_group', 0)
+    ('auth_user', 2)
+    ('api_iprecord', 1)
+    ('api_auditlog', 36)
+    ('api_usuario', 15)
+    ('api_material', 4)
+
