@@ -1,6 +1,7 @@
 import csv
 import io
 import json
+import logging
 import secrets
 import string
 from decimal import Decimal, InvalidOperation
@@ -267,6 +268,7 @@ def register_request(request):
 @csrf_exempt
 @require_http_methods(["POST"])
 def login(request):
+    logger = logging.getLogger(__name__)
     try:
         body = {}
         if request.body:
@@ -380,7 +382,8 @@ def login(request):
                 ),
             }
         )
-    except Exception as e:
+    except Exception:
+        logger.exception("Login error")
         return JsonResponse({"ok": False, "code": "error_servidor", "detail": "Error interno."}, status=500)
 
 
