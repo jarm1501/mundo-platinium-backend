@@ -114,6 +114,14 @@ CORS_ALLOWED_ORIGINS = [
     if o.strip()
 ]
 
+# Permitir cookies/credenciales cuando el frontend usa fetch con credentials: 'include'
+CORS_ALLOW_CREDENTIALS = True
+
+# Evitar bloqueos CSRF en entornos con dominios separados
+CSRF_TRUSTED_ORIGINS = [
+    "https://mundo-platinium-frontend.onrender.com",
+]
+
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "api.auth.MPJWTAuthentication",
