@@ -66,7 +66,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "postgresql://postgres:UeUS8L6pJ4MziPOJ@db.joieblnjauvxfmmucvhy.supabase.co:5432/postgres",
+    "postgresql://postgres.joieblnjauvxfmmucvhy:UeUS8L6pJ4MziPOJ@aws-1-us-east-2.pooler.supabase.com:6543/postgres",
 )
 
 DB_SSL_REQUIRE = os.getenv("DB_SSL_REQUIRE", "1") == "1"
