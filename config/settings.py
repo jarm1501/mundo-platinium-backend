@@ -1,3 +1,22 @@
+# --- CORS CONFIG PARA RENDER ---
+# Requiere django-cors-headers instalado (pip install django-cors-headers)
+INSTALLED_APPS = [
+    # ...existing code...
+    'corsheaders',
+]
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    # ...existing code...
+]
+
+# Permitir solo el frontend de Render
+CORS_ALLOWED_ORIGINS = [
+    "https://mundo-platinium-frontend.onrender.com",
+]
+
+# Si necesitas permitir cookies/autenticación cruzada:
+# CORS_ALLOW_CREDENTIALS = True
 from pathlib import Path
 import os
 from dotenv import load_dotenv
