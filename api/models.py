@@ -50,6 +50,9 @@ class Usuario(models.Model):
     last_login_ip_hash = models.CharField(max_length=64, blank=True, null=True)
     last_login_ip_enc = models.TextField(blank=True, null=True)
 
+    # Sesión activa (para evitar múltiples dispositivos)
+    session_token = models.CharField(max_length=64, blank=True, null=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     @property

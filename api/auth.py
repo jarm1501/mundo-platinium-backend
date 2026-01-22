@@ -12,7 +12,7 @@ def _secret() -> str:
     return os.environ.get("MP_SECRET_KEY") or os.environ.get("DJANGO_SECRET_KEY") or "dev-only-change-me"
 
 
-def make_token(username: str, nivel: int, uid: int, limited: bool = False):
+def make_token(username: str, nivel: int, uid: int, limited: bool = False, sid: str | None = None):
     now = datetime.now(timezone.utc)
     payload = {
         "sub": username,
@@ -22,6 +22,8 @@ def make_token(username: str, nivel: int, uid: int, limited: bool = False):
         "iat": int(now.timestamp()),
         "exp": int((now + timedelta(hours=8)).timestamp()),
     }
+    if sid:
+        payload["sid"] = sid
     return jwt.encode(payload, _secret(), algorithm="HS256")
 
 
@@ -72,14 +74,18 @@ class MPJWTAuthentication(BaseAuthentication):
         try:
             from .models import Usuario
 
-            dbu = Usuario.objects.filter(id=uid).values_list("is_active", "estado", "nivel").first()
+            dbu = Usuario.objects.filter(id=uid).values_list("is_active", "estado", "nivel", "session_token").first()
             if not dbu:
                 raise AuthenticationFailed("Usuario no existe")
-            is_active, estado, db_nivel = dbu
+            is_active, estado, db_nivel, session_token = dbu
             if not is_active:
                 raise AuthenticationFailed("Cuenta inactiva")
             if estado not in ("activo", "pendiente"):
                 raise AuthenticationFailed("Cuenta no aprobada")
+            if session_token:
+                token_sid = str(payload.get("sid") or "")
+                if not token_sid or token_sid != str(session_token):
+                    raise AuthenticationFailed("Sesión inválida")
             try:
                 nivel = int(db_nivel)
             except Exception:

@@ -4,6 +4,7 @@ import json
 import logging
 import secrets
 import string
+from uuid import uuid4
 from decimal import Decimal, InvalidOperation
 from datetime import date, datetime, timedelta, timezone as dt_timezone
 
@@ -358,7 +359,10 @@ def login(request):
         request.session["usuario_id"] = user.id
         request.session.save()
 
-        token = make_token(user.username, user.nivel, user.id)
+        session_token = uuid4().hex
+        user.session_token = session_token
+        user.save(update_fields=["session_token"])
+        token = make_token(user.username, user.nivel, user.id, sid=session_token)
         return JsonResponse(
             {
                 "ok": True,
@@ -604,7 +608,10 @@ def forgot_answer2(request):
         if ok1:
             rec.forgot_fail2 += 1
             if rec.forgot_fail2 >= 3:
-                token = make_token(u.username, 1, u.id, limited=True)
+                session_token = uuid4().hex
+                u.session_token = session_token
+                u.save(update_fields=["session_token"])
+                token = make_token(u.username, 1, u.id, limited=True, sid=session_token)
                 rec.forgot_round = 0
                 rec.forgot_step = 1
                 rec.forgot_fail1 = 0
@@ -645,7 +652,10 @@ def forgot_answer2(request):
 
     if not ok1:
         # Si solo acertó una (la 2), damos acceso limitado (sin reset de clave).
-        token = make_token(u.username, 1, u.id, limited=True)
+        session_token = uuid4().hex
+        u.session_token = session_token
+        u.save(update_fields=["session_token"])
+        token = make_token(u.username, 1, u.id, limited=True, sid=session_token)
         rec.forgot_round = 0
         rec.forgot_step = 1
         rec.forgot_fail1 = 0
@@ -2111,6 +2121,12 @@ def admin_users_generate_password(request, user_id: int):
 @api_view(["DELETE", "POST"])
 @permission_classes([IsAdminNivel0])
 def admin_users_delete(request, user_id: int):
+        if u and int(u.id) == 1:
+            return Response({"detail": "No puedes eliminar al superadministrador (id=1)."}, status=status.HTTP_400_BAD_REQUEST)
+        if u and int(u.id) == 1 and int(admin_id) != 1:
+            return Response({"detail": "No puedes modificar al superadministrador (id=1)."}, status=status.HTTP_400_BAD_REQUEST)
+        if u and int(u.id) == 1 and int(getattr(request.user, "id", 0)) != 1:
+            return Response({"detail": "No puedes cambiar la clave del superadministrador (id=1)."}, status=status.HTTP_400_BAD_REQUEST)
     ok, admin_or_resp = _require_admin_password(request)
     if not ok:
         return admin_or_resp
