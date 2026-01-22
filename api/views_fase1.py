@@ -1944,6 +1944,8 @@ def admin_users_update(request, user_id: int):
     u = get_object_or_404(Usuario, pk=user_id)
 
     admin_id = int(getattr(request.user, "id", 0) or 0)
+    if int(u.id) == 1 and int(admin_id) != 1:
+        return Response({"detail": "No puedes modificar al superadministrador (id=1)."}, status=status.HTTP_400_BAD_REQUEST)
     wants_sensitive_change = any(k in request.data for k in ("estado", "nivel", "is_active"))
     if wants_sensitive_change and int(user_id) != int(admin_id):
         admin_password = request.data.get("admin_password") or ""
@@ -2068,6 +2070,9 @@ def admin_users_reset_password(request, user_id: int):
     if not u:
         return Response({"detail": "No existe"}, status=status.HTTP_404_NOT_FOUND)
 
+    if int(u.id) == 1 and int(getattr(request.user, "id", 0)) != 1:
+        return Response({"detail": "No puedes cambiar la clave del superadministrador (id=1)."}, status=status.HTTP_400_BAD_REQUEST)
+
     before = UsuarioAdminSerializer(u).data
     u.password_hash = bcrypt.hashpw(clave.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
     u.save(update_fields=["password_hash"])
@@ -2121,12 +2126,6 @@ def admin_users_generate_password(request, user_id: int):
 @api_view(["DELETE", "POST"])
 @permission_classes([IsAdminNivel0])
 def admin_users_delete(request, user_id: int):
-        if u and int(u.id) == 1:
-            return Response({"detail": "No puedes eliminar al superadministrador (id=1)."}, status=status.HTTP_400_BAD_REQUEST)
-        if u and int(u.id) == 1 and int(admin_id) != 1:
-            return Response({"detail": "No puedes modificar al superadministrador (id=1)."}, status=status.HTTP_400_BAD_REQUEST)
-        if u and int(u.id) == 1 and int(getattr(request.user, "id", 0)) != 1:
-            return Response({"detail": "No puedes cambiar la clave del superadministrador (id=1)."}, status=status.HTTP_400_BAD_REQUEST)
     ok, admin_or_resp = _require_admin_password(request)
     if not ok:
         return admin_or_resp
@@ -2134,6 +2133,9 @@ def admin_users_delete(request, user_id: int):
     u = Usuario.objects.filter(id=user_id).first()
     if not u:
         return Response({"detail": "No existe"}, status=status.HTTP_404_NOT_FOUND)
+
+    if int(u.id) == 1:
+        return Response({"detail": "No puedes eliminar al superadministrador (id=1)."}, status=status.HTTP_400_BAD_REQUEST)
 
     if u.username == getattr(request.user, "username", None):
         return Response({"detail": "No puedes eliminar tu propio usuario"}, status=status.HTTP_400_BAD_REQUEST)
